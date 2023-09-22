@@ -10,18 +10,20 @@ const {
 
 /** validation keys and properties of disciplinas */
 exports.schemaKeys = joi.object({
-  name: joi.string().allow(null).allow(''),
-  parentId: joi.number().integer().allow(0),
-  description: joi.string().allow(null).allow(''),
+  nombre: joi.string().allow(null).allow(''),
+  created_at: joi.date().options({ convert: true }).allow(null).allow(''),
+  updated_at: joi.date().options({ convert: true }).allow(null).allow(''),
+  deleted_at: joi.date().options({ convert: true }).allow(null).allow(''),
   isActive: joi.boolean(),
   isDeleted: joi.boolean()
 }).unknown(true);
 
 /** validation keys and properties of disciplinas for updation */
 exports.updateSchemaKeys = joi.object({
-  name: joi.string().allow(null).allow(''),
-  parentId: joi.number().integer().allow(0),
-  description: joi.string().allow(null).allow(''),
+  nombre: joi.string().allow(null).allow(''),
+  created_at: joi.date().options({ convert: true }).allow(null).allow(''),
+  updated_at: joi.date().options({ convert: true }).allow(null).allow(''),
+  deleted_at: joi.date().options({ convert: true }).allow(null).allow(''),
   isActive: joi.boolean(),
   isDeleted: joi.boolean(),
   id: joi.number().integer()
@@ -33,9 +35,10 @@ exports.findFilterKeys = joi.object({
   options: options,
   ...Object.fromEntries(
     keys.map(key => [key, joi.object({
-      name: joi.alternatives().try(joi.array().items(),joi.string(),joi.object()),
-      parentId: joi.alternatives().try(joi.array().items(),joi.number().integer(),joi.object()),
-      description: joi.alternatives().try(joi.array().items(),joi.string(),joi.object()),
+      nombre: joi.alternatives().try(joi.array().items(),joi.string(),joi.object()),
+      created_at: joi.alternatives().try(joi.array().items(),joi.date().options({ convert: true }),joi.object()),
+      updated_at: joi.alternatives().try(joi.array().items(),joi.date().options({ convert: true }),joi.object()),
+      deleted_at: joi.alternatives().try(joi.array().items(),joi.date().options({ convert: true }),joi.object()),
       isActive: joi.alternatives().try(joi.array().items(),joi.boolean(),joi.object()),
       isDeleted: joi.alternatives().try(joi.array().items(),joi.boolean(),joi.object()),
       id: joi.any()

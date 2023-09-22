@@ -10,11 +10,14 @@ const sequelizeTransforms = require('sequelize-transforms');
 const { convertObjectToEnum } = require('../utils/common');
 let Obra = sequelize.define('obra',{
   id:{
-    type:DataTypes.STRING,
-    primaryKey:true
+    type:DataTypes.BIGINT,
+    primaryKey:true,
+    autoIncrement:true
   },
-  name:{ type:DataTypes.STRING },
-  disciplina_id:{ type:DataTypes.STRING },
+  obra:{ type:DataTypes.STRING },
+  created_at:{ type:DataTypes.DATE },
+  updated_at:{ type:DataTypes.DATE },
+  deleted_at:{ type:DataTypes.DATE },
   isActive:{ type:DataTypes.BOOLEAN },
   isDeleted:{ type:DataTypes.BOOLEAN },
   createdAt:{ type:DataTypes.DATE },

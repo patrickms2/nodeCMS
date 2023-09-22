@@ -10,20 +10,20 @@ const sequelizeTransforms = require('sequelize-transforms');
 const { convertObjectToEnum } = require('../utils/common');
 let Disciplinas = sequelize.define('disciplinas',{
   id:{
-    type:DataTypes.INTEGER,
+    type:DataTypes.BIGINT,
     primaryKey:true,
-    autoIncrement:true,
-    unique:true
+    autoIncrement:true
   },
-  name:{ type:DataTypes.STRING },
-  parentId:{ type:DataTypes.INTEGER },
-  description:{ type:DataTypes.STRING },
+  nombre:{ type:DataTypes.STRING },
+  created_at:{ type:DataTypes.DATE },
+  updated_at:{ type:DataTypes.DATE },
+  deleted_at:{ type:DataTypes.DATE },
   isActive:{ type:DataTypes.BOOLEAN },
+  isDeleted:{ type:DataTypes.BOOLEAN },
   createdAt:{ type:DataTypes.DATE },
   updatedAt:{ type:DataTypes.DATE },
   addedBy:{ type:DataTypes.INTEGER },
-  updatedBy:{ type:DataTypes.INTEGER },
-  isDeleted:{ type:DataTypes.BOOLEAN }
+  updatedBy:{ type:DataTypes.INTEGER }
 }
 ,{
   hooks:{
